@@ -24,17 +24,10 @@ import org.matrix.android.sdk.internal.wellknown.WellknownModule
 import retrofit2.Retrofit
 
 @Module(includes = [WellknownModule::class])
-internal abstract class HomeServerCapabilitiesModule {
+internal abstract class AuthMetadataModule {
 
     @Module
     companion object {
-        @Provides
-        @JvmStatic
-        @SessionScope
-        fun providesCapabilitiesAPI(retrofit: Retrofit): CapabilitiesAPI {
-            return retrofit.create(CapabilitiesAPI::class.java)
-        }
-
         @Provides
         @JvmStatic
         @SessionScope
