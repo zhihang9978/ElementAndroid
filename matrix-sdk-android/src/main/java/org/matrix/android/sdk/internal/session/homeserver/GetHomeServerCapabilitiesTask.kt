@@ -192,12 +192,8 @@ internal class DefaultGetHomeServerCapabilitiesTask @Inject constructor(
             // If the server returns OAuth 2.0 metadata then prefer that over the well-known values:
             if (authMetadata != null) {
                 homeServerCapabilitiesEntity.authenticationIssuer = authMetadata.issuer;
-                if (authMetadata.accountManagementUri != null) {
-                    homeServerCapabilitiesEntity.externalAccountManagementUrl = authMetadata.accountManagementUri;
-                }
-                if (authMetadata.accountManagementActionsSupported != null) {
-                    homeServerCapabilitiesEntity.externalAccountManagementSupportedActions = authMetadata.accountManagementActionsSupported.joinToString(",")
-                }
+                homeServerCapabilitiesEntity.externalAccountManagementUrl = authMetadata.accountManagementUri;
+                homeServerCapabilitiesEntity.externalAccountManagementSupportedActions = if (authMetadata.accountManagementActionsSupported != null) authMetadata.accountManagementActionsSupported.joinToString(",") else null
             }
 
             homeServerCapabilitiesEntity.canLoginWithQrCode = canLoginWithQrCode(getCapabilitiesResult, getVersionResult)
