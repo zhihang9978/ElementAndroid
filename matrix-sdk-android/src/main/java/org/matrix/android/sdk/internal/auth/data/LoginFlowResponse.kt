@@ -57,8 +57,8 @@ internal data class LoginFlow(
         /**
           * Unstable name from MSC3824.
           *
-          * @deprecated Use {@link oauthAwarePreferred} instead.
           */
+        @Deprecated("Use oauthAwarePreferred instead")
         @Json(name = "org.matrix.msc3824.delegated_oidc_compatibility")
         val unstableDelegatedOidcCompatibility: Boolean? = null,
 
@@ -70,6 +70,6 @@ internal data class LoginFlow(
         @Json(name = "get_login_token")
         val getLoginToken: Boolean? = null
 ) {
-    val delegatedOidcCompatibility: Boolean
+    @Suppress("DEPRECATION") val delegatedOidcCompatibility: Boolean
         get() = this.oauthAwarePreferred.orFalse() || this.unstableDelegatedOidcCompatibility.orFalse()
 }

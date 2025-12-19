@@ -193,7 +193,7 @@ internal class DefaultGetHomeServerCapabilitiesTask @Inject constructor(
             if (authMetadata != null) {
                 homeServerCapabilitiesEntity.authenticationIssuer = authMetadata.issuer
                 homeServerCapabilitiesEntity.externalAccountManagementUrl = authMetadata.accountManagementUri
-                homeServerCapabilitiesEntity.externalAccountManagementSupportedActions = if (authMetadata.accountManagementActionsSupported != null) authMetadata.accountManagementActionsSupported.joinToString(",") else null
+                homeServerCapabilitiesEntity.externalAccountManagementSupportedActions = authMetadata.accountManagementActionsSupported?.joinToString(",")
             }
 
             homeServerCapabilitiesEntity.canLoginWithQrCode = canLoginWithQrCode(getCapabilitiesResult, getVersionResult)

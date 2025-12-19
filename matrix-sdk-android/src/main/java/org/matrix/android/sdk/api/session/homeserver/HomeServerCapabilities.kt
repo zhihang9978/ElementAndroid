@@ -87,7 +87,7 @@ data class HomeServerCapabilities(
         val externalAccountManagementUrl: String? = null,
 
         /**
-         * External account management supported actions for use with OAuth API, provided by MSC4191 /auth_metadata discovery
+         * External account management supported actions for use with OAuth API, provided by MSC4191 /auth_metadata discovery.
          */
         val externalAccountManagementSupportedActions: List<String>? = null,
 
