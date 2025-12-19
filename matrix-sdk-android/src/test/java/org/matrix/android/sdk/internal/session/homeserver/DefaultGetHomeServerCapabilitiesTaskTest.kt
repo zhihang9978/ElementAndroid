@@ -64,7 +64,7 @@ class DefaultGetHomeServerCapabilitiesTaskTest {
 
     @Before
     fun setUp() {
-        coEvery { configExtractor.extract(any())} returns null
+        coEvery { configExtractor.extract(any()) } returns null
         monarchy.givenWhereReturns(result = homeServerCapabilitiesEntity)
     }
 
@@ -138,7 +138,6 @@ class DefaultGetHomeServerCapabilitiesTaskTest {
         // Given
         coEvery { getWellknownTask.execute(any()) } returns wellKnownWithoutDelegation
         coEvery { authMetadataAPI.getAuthMetadata() } returns authMetadataForTest2
-
 
         // When
         task.execute(GetHomeServerCapabilitiesTask.Params(forceRefresh = false))

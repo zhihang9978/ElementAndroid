@@ -110,7 +110,7 @@ internal class DefaultGetHomeServerCapabilitiesTask @Inject constructor(
             executeRequest(globalErrorReceiver = null) {
                 authMetadataAPI.getAuthMetadata()
             }
-        }.getOrNull();
+        }.getOrNull()
 
         // Domain may include a port (eg, matrix.org:8080)
         // Per https://spec.matrix.org/latest/client-server-api/#well-known-uri we should extract the hostname from the server name
@@ -191,8 +191,8 @@ internal class DefaultGetHomeServerCapabilitiesTask @Inject constructor(
 
             // If the server returns OAuth 2.0 metadata then prefer that over the well-known values:
             if (authMetadata != null) {
-                homeServerCapabilitiesEntity.authenticationIssuer = authMetadata.issuer;
-                homeServerCapabilitiesEntity.externalAccountManagementUrl = authMetadata.accountManagementUri;
+                homeServerCapabilitiesEntity.authenticationIssuer = authMetadata.issuer
+                homeServerCapabilitiesEntity.externalAccountManagementUrl = authMetadata.accountManagementUri
                 homeServerCapabilitiesEntity.externalAccountManagementSupportedActions = if (authMetadata.accountManagementActionsSupported != null) authMetadata.accountManagementActionsSupported.joinToString(",") else null
             }
 

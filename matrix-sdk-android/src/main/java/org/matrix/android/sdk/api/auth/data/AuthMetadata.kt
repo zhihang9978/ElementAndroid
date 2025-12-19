@@ -18,7 +18,6 @@ package org.matrix.android.sdk.api.auth.data
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
-import org.matrix.android.sdk.api.extensions.orFalse
 
 /**
  * This is a subset of the server metadata discovery for the OAuth 2.0 API

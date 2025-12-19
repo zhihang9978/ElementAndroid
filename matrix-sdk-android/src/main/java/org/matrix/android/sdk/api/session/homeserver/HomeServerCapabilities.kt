@@ -16,8 +16,6 @@
 
 package org.matrix.android.sdk.api.session.homeserver
 
-import org.matrix.android.sdk.api.extensions.orFalse
-
 data class HomeServerCapabilities(
         /**
          * True if it is possible to change the password of the account.
@@ -172,7 +170,7 @@ data class HomeServerCapabilities(
 
     fun getLogoutDeviceURL(deviceId: String): String? {
         if (externalAccountManagementUrl == null) {
-            return null;
+            return null
         }
 
         // default to the stable value:

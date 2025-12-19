@@ -17,7 +17,6 @@
 package org.matrix.android.sdk.internal.session.homeserver
 
 import org.matrix.android.sdk.api.auth.data.AuthMetadata
-import org.matrix.android.sdk.internal.auth.version.Versions
 import org.matrix.android.sdk.internal.network.NetworkConstants
 import retrofit2.http.GET
 

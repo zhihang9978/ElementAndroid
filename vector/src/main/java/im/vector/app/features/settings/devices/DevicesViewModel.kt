@@ -337,7 +337,7 @@ class DevicesViewModel @AssistedInject constructor(
     private fun handleDelete(action: DevicesAction.Delete) {
         val deviceId = action.deviceId
 
-        val externalLogoutDeviceUrl = session.homeServerCapabilitiesService().getHomeServerCapabilities().getLogoutDeviceURL(deviceId);
+        val externalLogoutDeviceUrl = session.homeServerCapabilitiesService().getHomeServerCapabilities().getLogoutDeviceURL(deviceId)
         if (externalLogoutDeviceUrl != null) {
             // Open external browser to delete this session
             _viewEvents.post(
