@@ -24,6 +24,7 @@ import androidx.core.view.ViewCompat
 import androidx.fragment.app.FragmentActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import im.vector.app.SpaceStateHandler
+import im.vector.app.config.Config
 import im.vector.app.config.OnboardingVariant
 import im.vector.app.core.debug.DebugNavigator
 import im.vector.app.core.di.ActiveSessionHolder
@@ -312,6 +313,11 @@ class DefaultNavigator @Inject constructor(
     }
 
     override fun openRoomDirectory(context: Context, initialFilter: String) {
+        // Federation features disabled - do nothing or show a toast
+        if (!Config.ENABLE_FEDERATION_FEATURES) {
+            Toast.makeText(context, "Room directory is disabled", Toast.LENGTH_SHORT).show()
+            return
+        }
         when (val currentSpace = spaceStateHandler.getCurrentSpace()) {
             null -> RoomDirectoryActivity.getIntent(context, initialFilter)
             else -> SpaceExploreActivity.newIntent(context, currentSpace.roomId)

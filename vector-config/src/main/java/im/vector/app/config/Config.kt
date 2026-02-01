@@ -13,6 +13,35 @@ import kotlin.time.Duration.Companion.days
  * Set of flags to configure the application.
  */
 object Config {
+    // ==========================================================================
+    // Federation Settings - DISABLED for Private Server
+    // ==========================================================================
+    
+    /**
+     * Set to false to disable federation-related features:
+     * - Public room directory exploration
+     * - Room directory server selection
+     * - "Explore Rooms" button in home screen
+     * This should be false when running a private, non-federated server.
+     */
+    const val ENABLE_FEDERATION_FEATURES = false
+    
+    /**
+     * Set to false to hide the option to create public rooms.
+     * Public rooms are typically used in federated environments.
+     */
+    const val ENABLE_PUBLIC_ROOM_CREATION = false
+    
+    /**
+     * Set to false to hide the "disable federation" option when creating rooms.
+     * This option is irrelevant when federation is already disabled server-side.
+     */
+    const val SHOW_FEDERATION_OPTION_IN_ROOM_CREATION = false
+    
+    // ==========================================================================
+    // Push & Distribution Settings
+    // ==========================================================================
+    
     /**
      * Flag to allow external UnifiedPush distributors to be chosen by the user.
      *

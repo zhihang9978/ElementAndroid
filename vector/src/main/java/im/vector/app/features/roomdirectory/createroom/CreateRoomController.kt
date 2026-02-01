@@ -10,6 +10,7 @@ package im.vector.app.features.roomdirectory.createroom
 import com.airbnb.epoxy.TypedEpoxyController
 import com.airbnb.mvrx.Fail
 import com.airbnb.mvrx.Loading
+import im.vector.app.config.Config
 import im.vector.app.core.epoxy.dividerItem
 import im.vector.app.core.epoxy.profiles.buildProfileAction
 import im.vector.app.core.resources.StringProvider
@@ -179,7 +180,8 @@ class CreateRoomController @Inject constructor(
             expanded(!viewState.showAdvanced)
             listener { host.listener?.toggleShowAdvanced() }
         }
-        if (viewState.showAdvanced) {
+        // Only show federation option if enabled in Config
+        if (viewState.showAdvanced && Config.SHOW_FEDERATION_OPTION_IN_ROOM_CREATION) {
             formSwitchItem {
                 id("federation")
                 enabled(enableFormElement)

@@ -104,6 +104,7 @@ class WebRtcCall(
         private val dispatcher: CoroutineContext,
         private val sessionProvider: Provider<Session?>,
         private val peerConnectionFactoryProvider: Provider<PeerConnectionFactory?>,
+        private val voipConfig: VoipConfig,
         private val onCallBecomeActive: (WebRtcCall) -> Unit,
         private val onCallEnded: (String, EndCallReason, Boolean) -> Unit
 ) : MxCall.StateListener {
@@ -292,8 +293,16 @@ class WebRtcCall(
             }
         }
         Timber.tag(loggerTag.value).v("creating peer connection...with iceServers $iceServers ")
+        Timber.tag(loggerTag.value).v("forceRelayOnlyMode: ${voipConfig.forceRelayOnlyMode}")
         val rtcConfig = PeerConnection.RTCConfiguration(iceServers).apply {
             sdpSemantics = PeerConnection.SdpSemantics.UNIFIED_PLAN
+            // Force all traffic through TURN relay when forceRelayOnlyMode is enabled
+            // This disables direct P2P connections and STUN, ensuring all
+            // audio/video streams are relayed through the TURN server
+            if (voipConfig.forceRelayOnlyMode) {
+                iceTransportsType = PeerConnection.IceTransportsType.RELAY
+                Timber.tag(loggerTag.value).v("ICE transport type set to RELAY only - all traffic will go through TURN")
+            }
         }
         peerConnection = peerConnectionFactory.createPeerConnection(rtcConfig, PeerConnectionObserver(this))
     }

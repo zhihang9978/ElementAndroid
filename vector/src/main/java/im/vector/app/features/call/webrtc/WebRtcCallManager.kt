@@ -331,6 +331,7 @@ class WebRtcCallManager @Inject constructor(
                     peerConnectionFactory
                 },
                 sessionProvider = { currentSession },
+                voipConfig = voipConfig,
                 onCallBecomeActive = this::onCallActive,
                 onCallEnded = this::onCallEnded
         )

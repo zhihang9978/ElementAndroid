@@ -1,0 +1,191 @@
+# Element Android 品牌定制文件清单
+
+本文档列出 Element Android 中所有与品牌标识相关的内容，便于进行品牌定制化替换。
+
+## 📱 应用标识
+
+### 1. 应用名称
+**文件位置**: `vector-app/build.gradle`
+```gradle
+// Debug 版本
+resValue "string", "app_name", "Element Classic - dbg"
+
+// Release 版本  
+resValue "string", "app_name", "Element Classic"
+```
+
+### 2. 应用图标 (Launcher Icons)
+**文件位置**: `vector-app/src/main/res/mipmap-*/`
+
+| 分辨率 | 文件名 | 尺寸 |
+|-------|--------|------|
+| mdpi | ic_launcher.png | 48x48 |
+| hdpi | ic_launcher.png | 72x72 |
+| xhdpi | ic_launcher.png | 96x96 |
+| xxhdpi | ic_launcher.png | 144x144 |
+| xxxhdpi | ic_launcher.png | 192x192 |
+| 圆形图标 | ic_launcher_round.png | 对应各分辨率 |
+
+**自适应图标**:
+- `mipmap-anydpi-v26/ic_launcher.xml` - 图标配置
+- `drawable-anydpi-v26/ic_launcher_foreground.xml` - 前景图标 (Element 四叶标志)
+- `drawable/ic_launcher_background.xml` - 背景颜色
+
+### 3. 图标背景色
+**文件位置**: `vector-app/src/main/res/values/colors.xml`
+```xml
+<color name="launcher_background">#0DBD8B</color>  <!-- Element 绿色 -->
+```
+
+## 🎨 Logo 资源
+
+### 1. 主 Logo
+**文件位置**: `library/ui-styles/src/main/res/drawable/`
+- `element_logo_green.xml` - Element 绿色四叶标志 (启动页使用)
+
+### 2. 带装饰 Logo
+**文件位置**: `vector/src/main/res/drawable/`
+- `element_logo_stars.xml` - Element 带星星装饰 Logo
+- `element_logotype.xml` - "element" 文字商标 (白色矢量文字)
+
+### 3. 合作伙伴 Logo
+- `ic_ems_logo.xml` - Element Matrix Services Logo
+- `ic_logo_element_matrix_services.xml` - EMS 完整 Logo
+- `ic_logo_matrix_org.xml` - Matrix.org Logo
+- `riot_animated_logo.xml` - 旧版 Riot 动画 Logo
+
+## 🖼️ 启动页和欢迎页
+
+### 1. 启动页背景
+**文件位置**: `library/ui-styles/src/main/res/drawable/`
+- `splash.xml` - 启动页布局配置
+- `element_splash_white.png` - 启动页白色 Logo (各分辨率)
+
+### 2. 欢迎页布局
+**文件位置**: `vector/src/main/res/layout/`
+- `fragment_ftue_auth_splash.xml` - 主欢迎页布局
+- `fragment_ftue_splash_carousel.xml` - 轮播引导页
+- `fragment_login_splash.xml` - 登录启动页
+- `item_splash_carousel.xml` - 轮播项布局
+
+### 3. 欢迎页插图
+**文件位置**: `vector/src/main/res/drawable-*/`
+- `ic_splash_collaboration*.webp` - 协作主题插图
+- `ic_splash_control*.webp` - 控制主题插图
+- `ic_splash_conversations*.webp` - 对话主题插图
+- `ic_splash_secure*.webp` - 安全主题插图
+- `app_layout_onboarding_*.webp` - 应用布局引导图
+- `ill_app_layout_onboarding_*.webp` - 应用布局插图
+
+## ⚙️ 关于页面
+
+### 1. 设置页面
+**文件位置**: `vector/src/main/res/xml/`
+- `vector_settings_help_about.xml` - 关于页面设置布局
+
+### 2. 关于图标
+**文件位置**: `vector/src/main/res/drawable/`
+- `ic_settings_root_help_about.xml` - 关于页图标
+
+## 🌍 品牌字符串
+
+### 1. 主字符串文件
+**文件位置**: `library/ui-strings/src/main/res/values/strings.xml`
+- `login_splash_title` - "It's your conversation. Own it."
+- `login_splash_text1` - "Chat with people directly or in groups"
+- `login_splash_text2` - "Keep conversations private with encryption"
+- `login_splash_text3` - "Extend & customize your experience"
+- `ftue_auth_carousel_*` - 轮播页标题和内容
+
+### 2. 多语言支持
+**文件位置**: `library/ui-strings/src/main/res/values-*/strings.xml`
+- 支持多种语言的本地化字符串
+
+## 🔧 配置文件中的品牌信息
+
+### 1. 服务器配置
+**文件位置**: `vector-config/src/main/res/values/config.xml`
+```xml
+<!-- 服务器 URL -->
+<string name="matrix_org_server_url">https://matrix.org</string>
+
+<!-- Bug 报告 -->
+<string name="bug_report_url">https://rageshakes.element.io/api/submit</string>
+
+<!-- Jitsi 会议 -->
+<string name="preferred_jitsi_domain">meet.element.io</string>
+
+<!-- 房间目录服务器 -->
+<string-array name="room_directory_servers">
+    <item>matrix.org</item>
+    <item>gitter.im</item>
+</string-array>
+
+<!-- 永久链接支持的主机 -->
+<string-array name="permalink_supported_hosts">
+    <item>app.element.io</item>
+    <item>develop.element.io</item>
+    <item>staging.element.io</item>
+    <item>riot.im</item>
+</string-array>
+```
+
+## 🎨 主题颜色
+
+### 1. 主颜色定义
+**文件位置**: `library/ui-styles/src/main/res/values/colors.xml`
+- `shield_color_trust` - Element 品牌绿色 `#0DBD8B`
+- `notification_accent_color` - 通知栏强调色
+- 各种主题颜色定义
+
+### 2. 主题文件
+**文件位置**: `library/ui-styles/src/main/res/values/theme_*.xml`
+- `theme_light.xml` - 浅色主题
+- `theme_dark.xml` - 深色主题
+- `theme_black.xml` - 纯黑主题
+
+## 🔔 通知图标
+
+**文件位置**: `vector/src/main/res/drawable-*/ic_notification.png`
+- 各分辨率的通知栏图标
+
+## 👤 示例头像
+
+**文件位置**: `vector/sampledata/room_round_avatars/`
+- `element_*.png` - Element 相关示例头像
+
+## 📋 品牌定制优先级建议
+
+### 高优先级 (必须修改)
+1. `vector-app/build.gradle` - 应用名称
+2. `vector-app/src/main/res/values/colors.xml` - 品牌主色
+3. `vector-app/src/main/res/mipmap-*/` - 启动图标
+4. `drawable-anydpi-v26/ic_launcher_foreground.xml` - 前景图标
+5. `library/ui-styles/src/main/res/drawable/element_logo_green.xml` - 主 Logo
+
+### 中优先级 (建议修改)
+1. `library/ui-styles/src/main/res/drawable-*/element_splash_white.png` - 启动页 Logo
+2. `vector/src/main/res/drawable/element_logotype.xml` - 文字商标
+3. `vector-config/src/main/res/values/config.xml` - 服务器配置
+4. 欢迎页插图资源
+
+### 低优先级 (可选修改)
+1. 通知图标
+2. 多语言字符串
+3. 主题颜色微调
+4. 示例头像
+
+## 🛠️ 替换步骤
+
+1. **备份原始文件**
+2. **按优先级逐步替换**
+3. **测试各功能是否正常**
+4. **重新编译 APK**
+5. **在设备上验证显示效果**
+
+## ⚠️ 注意事项
+
+- 替换图标时保持文件名和格式一致
+- 确保各分辨率图标内容一致
+- 修改配置文件后需要重新编译
+- 建议先在 Debug 版本测试

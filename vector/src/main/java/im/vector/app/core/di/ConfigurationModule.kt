@@ -68,6 +68,10 @@ object ConfigurationModule {
 
     @Provides
     fun providesVoipConfig() = VoipConfig(
-            handleCallAssertedIdentityEvents = Config.HANDLE_CALL_ASSERTED_IDENTITY_EVENTS
+            handleCallAssertedIdentityEvents = Config.HANDLE_CALL_ASSERTED_IDENTITY_EVENTS,
+            // Force all WebRTC traffic through TURN relay servers
+            // Set to true to ensure all audio/video streams go through TURN
+            // This is recommended for cross-border calls and strict privacy requirements
+            forceRelayOnlyMode = true
     )
 }
